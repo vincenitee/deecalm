@@ -129,5 +129,6 @@ Built by [**vincenitee**](https://github.com/vincenitee) — developer working i
 ---
 
 ## 📄 License
+All Rights Reserved.
 
-*(Add your chosen license here — e.g., MIT, or "All rights reserved" if you don't intend to open-source it.)*
+© 2026 Vincent Bolinget (vincenitee). This source code is made publicly viewable for portfolio purposes only. No part of this repository may be copied, modified, distributed, or used to create derivative works without explicit written permission from the author.
