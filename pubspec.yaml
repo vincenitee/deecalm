@@ -49,6 +49,7 @@ dependencies:
   flutter_svg: ^2.3.0
   lucide_icons_flutter: ^3.1.15
   sort_pubspec_dependencies: ^0.0.2
+  dart_either: ^2.1.0
 
 dev_dependencies:
   flutter_test:
