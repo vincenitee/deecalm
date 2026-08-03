@@ -8,3 +8,4 @@ analyzer:
 linter:
   rules:
     public_member_api_docs: false # skip if you don't want doc comments enforced on every public member
+    one_member_abstract: false # skip warning for one member abstracts
