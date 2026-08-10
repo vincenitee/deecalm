@@ -4,7 +4,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 
 class GoogleAuthDatasource {
-  final GoogleSignIn _signIn = GoogleSignIn.instance;
+  GoogleAuthDatasource(this._googleSignIn);
+
+  final GoogleSignIn _googleSignIn;
 
   bool _initialized = false;
 
@@ -16,12 +18,12 @@ class GoogleAuthDatasource {
     const isWebClientIdDefined = bool.hasEnvironment('GOOGLE_WEB_CLIENT_ID');
     const webClientId = String.fromEnvironment('GOOGLE_WEB_CLIENT_ID');
 
-    if (!isWebClientIdDefined && webClientId.isEmpty) {
+    if (!isWebClientIdDefined || webClientId.isEmpty) {
       throw const ServerConfigException();
     }
 
     // Initializes Google Sign In instance
-    await _signIn.initialize(serverClientId: webClientId);
+    await _googleSignIn.initialize(serverClientId: webClientId);
 
     _initialized = true;
   }
@@ -31,7 +33,7 @@ class GoogleAuthDatasource {
     try {
       await _ensureInitialized();
 
-      final account = await _signIn.authenticate();
+      final account = await _googleSignIn.authenticate();
       final idToken = account.authentication.idToken;
       if (idToken == null) {
         throw const GoogleAuthException('No id token returned');
