@@ -8,24 +8,32 @@ class GoogleAuthDatasource {
 
   final GoogleSignIn _googleSignIn;
 
-  bool _initialized = false;
+  Future<void>? _initialization;
 
   // Ensure Google Sign In plug in is initialized
   Future<void> _ensureInitialized() async {
-    if (_initialized) return;
+    final existing = _initialization;
+    if(existing != null) return existing;
 
-    // Check if the web client id is attached to the build command
-    const isWebClientIdDefined = bool.hasEnvironment('GOOGLE_WEB_CLIENT_ID');
-    const webClientId = String.fromEnvironment('GOOGLE_WEB_CLIENT_ID');
+    final future = _initialize();
+    _initialization = future;
 
-    if (!isWebClientIdDefined || webClientId.isEmpty) {
+    try {
+      await future;
+    } on Exception {
+      _initialization = null;
+      rethrow;
+    }
+  }
+
+  Future<void> _initialize() async {
+    const webClientId = String.fromEnvironment('GOOGLE_WEB_CLIENT');
+
+    if (webClientId.isEmpty) {
       throw const ServerConfigException();
     }
 
-    // Initializes Google Sign In instance
     await _googleSignIn.initialize(serverClientId: webClientId);
-
-    _initialized = true;
   }
 
   // Attempt to sign in and retrieve the id token
