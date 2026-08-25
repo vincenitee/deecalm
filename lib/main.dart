@@ -1,9 +1,12 @@
+import 'package:deecalm/core/config/env.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  Env.validate();
 
   await Supabase.initialize(
     url: const String.fromEnvironment('SUPABASE_URL'),

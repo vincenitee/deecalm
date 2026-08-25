@@ -27,7 +27,7 @@ class GoogleAuthDatasource {
   }
 
   Future<void> _initialize() async {
-    const webClientId = String.fromEnvironment('GOOGLE_WEB_CLIENT');
+    const webClientId = String.fromEnvironment('GOOGLE_WEB_CLIENT_ID');
 
     if (webClientId.isEmpty) {
       throw const ServerConfigException();
