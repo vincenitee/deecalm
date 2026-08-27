@@ -1,4 +1,6 @@
+import 'package:deecalm/config/routes/router.dart';
 import 'package:deecalm/core/config/env.dart';
+import 'package:deecalm/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -22,26 +24,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              OutlinedButton(
-                onPressed: () {},
-                child: const Text('Continue with Google'),
-              ),
-
-              OutlinedButton(
-                onPressed: () {},
-                child: const Text('Continue with Email'),
-              ),
-            ],
-          ),
-        ),
-      ),
+      theme: AppTheme.light,
+      routerConfig: router
     );
   }
 }
