@@ -16,12 +16,12 @@ abstract final class AppTheme {
       textTheme: appTextTheme,
       fontFamily: appTextTheme.bodyMedium?.fontFamily,
       extensions: const [dimens],
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
+      filledButtonTheme: FilledButtonThemeData(
+        style: FilledButton.styleFrom(
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.onPrimary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(dimens.radiusMd),
+            borderRadius: BorderRadius.circular(dimens.radiusLg),
           ),
         ),
       ),
@@ -30,7 +30,7 @@ abstract final class AppTheme {
           foregroundColor: AppColors.primary,
           side: BorderSide(color: AppColors.secondary.withValues(alpha: 0.2)),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(dimens.radiusMd),
+            borderRadius: BorderRadius.circular(dimens.radiusLg),
           ),
         ),
       ),
@@ -46,7 +46,7 @@ abstract final class AppTheme {
         filled: true,
         fillColor: AppColors.surfaceContainerLow,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(dimens.radiusMd),
+          borderRadius: BorderRadius.circular(dimens.radiusLg),
           borderSide: BorderSide.none,
         ),
       ),
