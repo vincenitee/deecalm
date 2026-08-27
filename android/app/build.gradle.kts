@@ -6,7 +6,9 @@ plugins {
 
 android {
     namespace = "com.vincenitee.deecalm"
-    compileSdk = 37
+    compileSdk {
+        version = release(37) { minorApiLevel = 0 }
+    }
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
